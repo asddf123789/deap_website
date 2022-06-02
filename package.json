@@ -5,12 +5,11 @@
     "nodemon": "^2.0.15",
     "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
-  "name": "mmca-website",
+  "name": "deap-website",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
-    "start": "node ./app.js",
-    "test": "jest"
+    "start": "node ./app.js"
   }
 }
