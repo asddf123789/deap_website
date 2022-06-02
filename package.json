@@ -10,18 +10,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
-    "start": "node ./app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cooperqmarshall/mmca-website.git"
-  },
-  "keywords": [],
-  "author": "Cooper Marshall <cooperqmarshall@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cooperqmarshall/mmca-website/issues"
-  },
-  "homepage": "https://github.com/cooperqmarshall/mmca-website#readme",
-  "description": ""
+    "start": "node ./app.js",
+    "test": "jest"
+  }
 }
