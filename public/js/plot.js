@@ -266,7 +266,7 @@ export default class Plot {
     }
 
     console.log('fetching data');
-    const res = await fetch('/deap/data?' + new URLSearchParams(params));
+    const res = await fetch('/deap_v2/data?' + new URLSearchParams(params));
     if (!res.ok) {
       throw "Database Error"
     }
@@ -282,7 +282,7 @@ export default class Plot {
     }
 
     console.log('fetching data');
-    const res = await fetch('/deap/data?' + new URLSearchParams(params));
+    const res = await fetch('/deap_v2/data?' + new URLSearchParams(params));
     if (!res.ok) {
       throw "Database Error"
     }

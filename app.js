@@ -7,7 +7,7 @@ const hostname = '127.0.0.1';
 const port = 4000;
 const { __db_path__ } = require('./public/js/global.js')
 
-app.use('/deap/public', express.static(path.join(__dirname, '/public')));
+app.use('/deap_v2/public', express.static(path.join(__dirname, '/public')));
 
 console.log(__dirname);
 
@@ -20,11 +20,11 @@ const db = new sqlite3.Database(__db_path__, sqlite3.OPEN_READONLY, (err) => {
   }
 });
 
-app.get('/deap', (_, res) => {
+app.get('/deap_v2', (_, res) => {
   res.sendFile(path.join(__dirname, 'public/about.html'))
 });
 
-app.get('/deap/data', (req, res) => {
+app.get('/deap_v2/data', (req, res) => {
   try {
     process_data_request(req.query, res);
     console.log('Processing request..');
@@ -34,7 +34,7 @@ app.get('/deap/data', (req, res) => {
 });
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/deap`);
+  console.log(`Server running at http://${hostname}:${port}/deap_v2`);
 });
 
 process_data_request = (params, res) => {
