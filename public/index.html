@@ -45,6 +45,7 @@
             </li>
         </ul>
     </nav>
+
     <div class="container data-container">
         <div class="row filters">
             <div class="six columns offset-by-three form-input center">
@@ -52,22 +53,24 @@
                     <div class="tooltip-text">Model inferred time window hours</div>
                 </label>
                 <select class="u-full-width" id="timepoint">
-                    <option value="00-02">00-02</option>
-                    <option value="02-04">02-04</option>
-                    <option value="04-06">04-06</option>
-                    <option value="06-08">06-08</option>
-                    <option value="08-10">08-10</option>
-                    <option value="10-12">10-12</option>
-                    <option value="12-14">12-14</option>
-                    <option value="14-16">14-16</option>
-                    <option value="16-18">16-18</option>
-                    <option value="18-20">18-20</option>
+                    <option value="00-02">00-02 hours</option>
+                    <option value="02-04">02-04 hours</option>
+                    <option value="04-06">04-06 hours</option>
+                    <option value="06-08">06-08 hours</option>
+                    <option value="08-10">08-10 hours</option>
+                    <option value="10-12">10-12 hours</option>
+                    <option value="12-14">12-14 hours</option>
+                    <option value="14-16">14-16 hours</option>
+                    <option value="16-18">16-18 hours</option>
+                    <option value="18-20">18-20 hours</option>
                 </select>
             </div>
         </div>
+
         <div class="row center">
             <h7 class="twelve columns" id="error-message"></h7>
         </div>
+
         <div class="row card-container">
             <div class="card six columns" id="plot_1">
                 <div class="container filters">
@@ -103,8 +106,7 @@
                 <div class="plot u-max-full-width" id="scatter-plot-1"></div>
                 <h6 id="title_1"></h6>
             </div>
-        
-        <div class="card six columns" id="plot_2">
+            <div class="card six columns" id="plot_2">
                 <div class="container filters">
                     <div class="row center">
                         <div class="five columns form-input center">
@@ -139,6 +141,58 @@
                 <h6 id="title_2"></h6>
             </div>
         </div>
+
+
+        <div class="row card-container">
+            <div class="card six columns" id="plot_1">
+                <div class="container filters">
+                    <div class="row center">
+                        <div id="groupby_wrapper_1" class="five columns hide form-input center">
+                            <label for="groupby_1">Group by: </label>
+                            <select id="groupby_1">
+                                <option value="annotation">Annotation</option>
+                                <option value="cluster_annotation">Cluster annotation</option>
+                            </select>
+                        </div>
+                        <div id="apply_wrapper_1" class="two columns hide center">
+                            <button class='' type='button' id='apply-3'>Apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lds-ellipsis" id='loading-3'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="plot u-max-full-width" id="bar-plot-1"></div>
+                <h6 id="title_1"></h6>
+            </div>
+            <div class="card six columns" id="plot_4">
+                <div class="container filters">
+                    <div class="row center">
+                        <div id="groupby_wrapper_2" class="five columns hide form-input center">
+                            <label for="groupby_2">Group by: </label>
+                            <select id="groupby_2">
+                                <option value="annotation">Annotation</option>
+                                <option value="cluster_annotation">Cluster annotation</option>
+                            </select>
+                        </div>
+                        <div id="apply_wrapper_2" class="two columns hide center">
+                            <button class='' type='button' id='apply-4'>Apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lds-ellipsis" id='loading-4'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="plot u-max-full-width" id="bar-plot-2"></div>
+            </div>
+        </div>
+
         </div>
     </div>
 

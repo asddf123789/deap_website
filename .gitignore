@@ -1,1 +1,2 @@
-/public/*.db
+public/*.db
+node_modules/
