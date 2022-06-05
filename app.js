@@ -37,6 +37,9 @@ app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/deap_v2`);
 });
 
+app.keepAliveTimeout = 60 * 1000;
+app.headersTimeout = 65 * 1000;
+
 process_data_request = (params, res) => {
   let sql = '';
   if (params.gene) {
