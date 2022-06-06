@@ -48,7 +48,7 @@ export default class Plot {
     this.bar_apply = document.getElementById(bar_apply_id);
     this.title = document.getElementById(title_id);
     this.assay = assay;
-    this.bar_layout = { yaxis: { title: 'Counts' } };
+    this.bar_layout = { xaxis: { automargin: true }, yaxis: { automargin: true, title: 'Counts' } };
     console.log('finished construction');
   }
 
@@ -78,16 +78,18 @@ export default class Plot {
       scene: {
         xaxis: {
           // visible: false
+          automargin: true,
           showticklabels: false,
           title: { text: "UMAP 1" }
         },
         yaxis: {
           // visible: false
+          automargin: true,
           showticklabels: false,
           title: { text: "UMAP 2" }
         }
       },
-      height: 450,
+      //height: 450,
       margin: { l: 0, r: 0, b: 0, t: 0 },
       legend: { bgcolor: 'rgba(255,255,255,0.6)', yanchor: "top", y: 0.95, xanchor: "right", x: 0.99 },
       showlegend: this.legendVisible
@@ -95,7 +97,7 @@ export default class Plot {
 
     await Plotly.newPlot(this.plot_id, traces, layout, { responsive: true })
     this.#update_bar_layout();
-    await Plotly.newPlot(this.bar_plot_id, [datas], this.bar_layout)
+    await Plotly.newPlot(this.bar_plot_id, [datas], this.bar_layout, { responsive: true })
     this.loading_div.classList.remove('lds-ellipsis');
     this.bar_loading_div.classList.remove('lds-ellipsis');
     this.plot = document.getElementById(this.plot_id);
@@ -118,7 +120,7 @@ export default class Plot {
       this.#update_title();
       Plotly.addTraces(this.plot_id, [...this.traces]);
       this.#update_bar_layout();
-      Plotly.react(this.bar_plot_id, [this.bar_data], this.bar_layout);
+      Plotly.react(this.bar_plot_id, [this.bar_data], this.bar_layout, { responsive: true });
       this.loading_div.classList.remove('lds-ellipsis');
       this.bar_loading_div.classList.remove('lds-ellipsis');
     } else {
@@ -129,7 +131,7 @@ export default class Plot {
         return;
       }
       this.#update_bar_layout();
-      Plotly.react(this.bar_plot_id, [this.bar_data], this.bar_layout);
+      Plotly.react(this.bar_plot_id, [this.bar_data], this.bar_layout, { responsive: true });
       this.bar_loading_div.classList.remove('lds-ellipsis');
     }
   }
@@ -412,7 +414,7 @@ export default class Plot {
     } else if (this.annotation_selector.value == 'inferred_time') {
       yaxis_text = `Mean of inferred time`
     }
-    this.bar_layout = { yaxis: { title: yaxis_text } };
+    this.bar_layout = { xaxis: { automargin: true }, yaxis: { automargin: true, title: yaxis_text } };
   }
   
   #unpack(data, key) { return data.map(row => row[key]) }
