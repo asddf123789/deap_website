@@ -242,7 +242,7 @@ export default class Plot {
           var avg = calculateAverage(values);
           bar_x.push(keys); 
           bar_y.push(avg);
-          console.log("keys: " + keys + " avg: " + avg);
+          //console.log("keys: " + keys + " avg: " + avg);
         })
       }
     }
@@ -296,20 +296,12 @@ export default class Plot {
         $(this.gene_wrapper).addClass('slide-right')
         this.detail = "gene"
         $(this.apply).addClass("button-primary");
-        $(this.groupby_wrapper).removeClass('hide');
-        $(this.apply_wrapper).removeClass('hide');
       } else {
         this.detail = "annotation";
         $(this.gene_wrapper).addClass('hide')
         $(this.gene_wrapper).removeClass('slide-right')
         $(this.apply).addClass("button-primary");
-        $(this.groupby_wrapper).addClass('hide');
-        $(this.apply_wrapper).addClass('hide');
       };
-      if (this.annotation_selector.value == 'inferred_time') {
-        $(this.groupby_wrapper).removeClass('hide');
-        $(this.apply_wrapper).removeClass('hide');
-      }
     };
       
     this.groupby_selector.onchange = () => {
@@ -328,6 +320,17 @@ export default class Plot {
       document.getElementById("error-message").innerHTML = "";
       this.update_plot();
       $(this.apply).removeClass("button-primary");
+      if (this.annotation_selector.value.includes('gene_expression')) {
+        $(this.groupby_wrapper).removeClass('hide');
+        $(this.apply_wrapper).removeClass('hide');
+      } else {
+        $(this.groupby_wrapper).addClass('hide');
+        $(this.apply_wrapper).addClass('hide');
+      };
+      if (this.annotation_selector.value == 'inferred_time') {
+        $(this.groupby_wrapper).removeClass('hide');
+        $(this.apply_wrapper).removeClass('hide');
+      }
     });
     
     this.bar_apply.addEventListener('click', () => {
