@@ -48,7 +48,7 @@ export default class Plot {
     this.bar_apply = document.getElementById(bar_apply_id);
     this.title = document.getElementById(title_id);
     this.assay = assay;
-    this.bar_layout = { xaxis: { automargin: true }, yaxis: { automargin: true, title: 'Counts' } };
+    this.bar_layout = { xaxis: { automargin: true, 'categoryorder':'total descending' }, yaxis: { automargin: true, title: 'Counts' } };
     console.log('finished construction');
   }
 
@@ -138,6 +138,7 @@ export default class Plot {
 
   async #generate_traces() {
     this.loading_div.classList.add('lds-ellipsis');
+    this.bar_loading_div.classList.add('lds-ellipsis');
     let data;
     try {
       data = await this.#fetch_data();
@@ -164,8 +165,9 @@ export default class Plot {
         filtered_data = data.filter((el) => el[annotation] == unique[item]);
         color = this.colors[unique[item]];
       } else {
-        filtered_data = data;
+        filtered_data = data.sort( function( a, b ) { return Math.abs(a.expression) - Math.abs(b.expression); });;
         color = this.#unpack(filtered_data, unique[item]);
+        console.log(filtered_data);
       }
 
       let trace = {
@@ -414,7 +416,7 @@ export default class Plot {
     } else if (this.annotation_selector.value == 'inferred_time') {
       yaxis_text = `Mean of inferred time`
     }
-    this.bar_layout = { xaxis: { automargin: true }, yaxis: { automargin: true, title: yaxis_text } };
+    this.bar_layout = { xaxis: { automargin: true, 'categoryorder':'total descending' }, yaxis: { automargin: true, title: yaxis_text } };
   }
   
   #unpack(data, key) { return data.map(row => row[key]) }
